@@ -8,12 +8,11 @@
 
 bool running = true;
 
-// Обработка сигнала завершения (например, Ctrl+C)
+
 void handle_signal(int signal) {
     running = false;
 }
 
-// Чтение процента загрузки CPU из /proc/stat
 float get_cpu_usage() {
     static long prev_idle = 0, prev_total = 0;
 
@@ -40,7 +39,6 @@ float get_cpu_usage() {
 }
 
 int main() {
-    // Подключаем обработку SIGINT (Ctrl+C)
     signal(SIGINT, handle_signal);
 
     std::ofstream log("/var/log/cpu_monitor.log", std::ios::app);
